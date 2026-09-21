@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+.swiper-button-prev, .swiper-button-next {    
+    color: #f5c619 !important;    
+}
+
+.swiper-pagination-bullet {
+    background-color: #f5c619 !important;
+}
