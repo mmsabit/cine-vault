@@ -1,23 +1,22 @@
 "use client"
+
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Mousewheel } from "swiper/modules";
-import UcCard from "./UcCard";
+import NowCard from "./NowCard";
 
-const UcCarousel = ({movies, genres}) => {
+const NowCarousel = ({ movies, genres }) => {
   return (
     <div>
       <Swiper
         spaceBetween={20}
         speed={500}
-        
         rewind={true}
         simulateTouch={false}
         navigation={{
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         }}
-        
         mousewheel={true}
         modules={[Navigation, Mousewheel]}
         breakpoints={{
@@ -47,14 +46,11 @@ const UcCarousel = ({movies, genres}) => {
           },
         }}
       >
-
         {movies.map((movie) => (
-        <SwiperSlide key={movie.id}>
-          <UcCard movie={movie} genres={genres}/>
-        </SwiperSlide>
-      ))} 
-        
-
+          <SwiperSlide key={movie.id}>
+            <NowCard movie={movie} genres={genres}/>
+          </SwiperSlide>
+        ))}
 
         <div className="swiper-button-next"></div>
         <div className="swiper-button-prev"></div>
@@ -63,4 +59,4 @@ const UcCarousel = ({movies, genres}) => {
   );
 };
 
-export default UcCarousel;
+export default NowCarousel;

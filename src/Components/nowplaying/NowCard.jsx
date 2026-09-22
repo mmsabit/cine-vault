@@ -2,8 +2,8 @@ import Image from "next/image";
 import React from "react";
 import { FaStar, FaHeart, FaPlus, FaArrowRight } from "react-icons/fa";
 
-const UcCard = ({ movie, genres }) => {
-  const genreNames = (movie.genre_ids || [])
+const NowCard = ({movie, genres}) => {
+    const genreNames = (movie.genre_ids || [])
     .map((id) => genres.find((g) => g.id === id)?.name)
     .filter(Boolean);
   return (
@@ -43,16 +43,12 @@ const UcCard = ({ movie, genres }) => {
 
           {/* Genre */}
           {/* <span className="text-gray-500">•</span> */}
-          <div className="mt-1 flex items-center gap-3 text-[12px]">            
-            
+          <div className="mt-1 flex items-center gap-3 text-[12px]">
             {genreNames.map((name, ind) => (
-                <span
-                  key={ind}
-                  className="text-gray-300 card-genre"
-                >
-                  {name}
-                </span>
-              ))}
+              <span key={ind} className="text-gray-300 card-genre">
+                {name}
+              </span>
+            ))}
           </div>
 
           {/* Date + Likes */}
@@ -73,6 +69,10 @@ const UcCard = ({ movie, genres }) => {
           </div>
 
           {/* Watchlist */}
+          <button className="mt-1 flex h-7 w-full items-center justify-center gap-2 bg-[#202d37] text-[12px] font-medium text-gray-300 transition hover:bg-[#2b3a46]">
+            <FaPlus className="text-[10px]" />
+            Watchlist
+          </button>
           <button className="btn btn-sm w-full flex gap-4 px-8 py-2 bg-[#F5C518] items-center justify-center text-[#222B33] mt-1">
             View Details
             <FaArrowRight size={20} color="#222B33" />
@@ -83,4 +83,4 @@ const UcCard = ({ movie, genres }) => {
   );
 };
 
-export default UcCard;
+export default NowCard;

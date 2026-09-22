@@ -1,11 +1,11 @@
 import React from 'react';
 
-const popular = () => {
+const Movies = () => {
     return (
         <div>
-            Popular page
+            Movies Page here
         </div>
     );
 };
 
-export default popular;
+export default Movies;

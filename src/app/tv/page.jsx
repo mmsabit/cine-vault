@@ -1,11 +1,11 @@
 import React from 'react';
 
-const upcoming = () => {
+const TV = () => {
     return (
         <div>
-            Upcoming Movies
+            TV Show page here
         </div>
     );
 };
 
-export default upcoming;
+export default TV;
