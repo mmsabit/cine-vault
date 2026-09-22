@@ -1,7 +1,6 @@
 import React from 'react';
 import HeroSection from './HeroSection';
 
-const API_KEY = "0bdbd524323ecee94cf827fcaa8aee39";
 
 const getHeroData = async () => {
   const [moviesRes, genresRes] = await Promise.all([

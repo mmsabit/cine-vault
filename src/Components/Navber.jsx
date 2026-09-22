@@ -18,7 +18,7 @@ const Navber = () => {
         <Link href="/upcoming">Upcoming</Link>
       </li>
       <li>
-        <Link href="/populer">Populer</Link>
+        <Link href="/popular">Popular</Link>
       </li>
     </>
   );

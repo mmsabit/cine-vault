@@ -5,6 +5,7 @@ import { MdOutlineStar } from "react-icons/md";
 import { AiFillLike } from "react-icons/ai";
 import { IoEyeSharp } from "react-icons/io5";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
+import { FaArrowRight } from "react-icons/fa6";
 
 const HeroSlide = ({movie, genres}) => {
   const genreNames = (movie.genre_ids || [])
@@ -59,14 +60,17 @@ const HeroSlide = ({movie, genres}) => {
                 </span>
               ))}
             </div>
-            <div className="max-w-150">
-              <p className="text-[16px] text-[#D1C5AC]">
+            <div className="max-w-150 min-h-30">
+              <p className="text-[16px] text-[#D1C5AC] ">
                 {movie.overview}
               </p>
             </div>
-            <div className="">
-                <button className="flex gap-2 px-4 py-2 bg-[#222B33] items-center justify-center">
+            <div className="flex gap-6">
+                <button className="btn flex gap-2 px-4 py-2 bg-[#222B33] items-center justify-center">
                     <MdOutlineBookmarkAdd  size={24} color="#F5C518" /> Add to Watchlist
+                </button>
+                <button className="btn flex gap-4 px-8 py-2 bg-[#F5C518] items-center justify-center text-[#222B33] ">
+                    View Details<FaArrowRight  size={20} color="#222B33" />
                 </button>
             </div>
           </div>
