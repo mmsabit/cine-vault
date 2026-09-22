@@ -12,13 +12,13 @@ const Navber = () => {
         <Link href="/">Home</Link>
       </li>
       <li>
-        <Link href="/top-rated">Top-rated</Link>
+        <Link href="/movies">Movies</Link>
       </li>
       <li>
-        <Link href="/upcoming">Upcoming</Link>
+        <Link href="/tv">TV Shows</Link>
       </li>
       <li>
-        <Link href="/popular">Popular</Link>
+        <Link href="/cast">Cast</Link>
       </li>
     </>
   );
