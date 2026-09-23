@@ -24,7 +24,7 @@ const Navber = () => {
   );
 
   return (
-    <div className="bg-[#131c24]">
+    <div className="bg-[#131c24] z-999">
       <div className="navbar shadow-sm container mx-auto py-5">
         <div className="navbar-start">
           <div className="dropdown">

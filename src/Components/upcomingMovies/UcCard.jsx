@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { FaStar, FaHeart, FaPlus, FaArrowRight } from "react-icons/fa";
+import { FaStar, FaHeart, FaArrowRight } from "react-icons/fa";
 
 const UcCard = ({ movie, genres }) => {
   const genreNames = (movie.genre_ids || [])

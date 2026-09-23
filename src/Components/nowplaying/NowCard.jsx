@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { FaStar, FaHeart, FaPlus, FaArrowRight } from "react-icons/fa";
 
-const NowCard = ({movie, genres}) => {
-    const genreNames = (movie.genre_ids || [])
+const NowCard = ({ movie, genres }) => {
+  const genreNames = (movie.genre_ids || [])
     .map((id) => genres.find((g) => g.id === id)?.name)
     .filter(Boolean);
   return (
@@ -74,10 +75,12 @@ const NowCard = ({movie, genres}) => {
             <FaPlus className="text-[10px]" />
             Watchlist
           </button>
-          <button className="btn btn-sm w-full flex gap-4 px-8 py-2 bg-[#F5C518] items-center justify-center text-[#222B33] mt-1">
-            View Details
-            <FaArrowRight size={20} color="#222B33" />
-          </button>
+          <Link href={`/movies/${movie.id}`}>
+            <button className="btn btn-sm w-full flex gap-4 px-8 py-2 bg-[#F5C518] items-center justify-center text-[#222B33] mt-1">
+              View Details
+              <FaArrowRight size={20} color="#222B33" />
+            </button>
+          </Link>
         </div>
       </div>
     </div>
