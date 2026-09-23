@@ -15,6 +15,7 @@ const NowCard = ({movie, genres}) => {
             src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
             alt={movie.original_title}
             fill
+            sizes="max-width-100%"
             className="h-full w-full object-cover"
           />
           {/* Language */}

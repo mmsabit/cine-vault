@@ -1,10 +1,15 @@
-import NowCard from "@/Components/nowplaying/NowCard";
 import React from "react";
+import NowCard from "@/Components/nowplaying/NowCard";
+import Pagination from "./Pagination";
 
-const Movies = async () => {
-  const page = 1;
+const Movies = async ({ searchParams }) => {
+  const params = await searchParams;
+
+  const page = Number(params?.page) || 1
+
+
   const data = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/movie/now_playing?api_key=${process.env.API_KEY}&page=${page}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/discover/movie?api_key=${process.env.API_KEY}&page=${page}&&primary_release_date.lte=2026-12-31&sort_by=primary_release_date.desc?include_adult=false&with_original_language=en`,
   );
   const movies = await data.json();
 
@@ -12,6 +17,9 @@ const Movies = async () => {
     `${process.env.NEXT_PUBLIC_API_URL}/genre/movie/list?api_key=${process.env.API_KEY}`,
   );
   const genres = await genreData.json();
+
+  const totalPages = Math.min(movies.total_pages, 500);
+
   return (
     <div className="container mx-auto">
       <div className="bg-[#101c28] w-full text-5xl font-bold text-center p-10 my-20 rounded-3xl">
@@ -22,9 +30,8 @@ const Movies = async () => {
           <NowCard key={movie.id} movie={movie} genres={genres.genres} />
         ))}
       </div>
-      
-      </div>
-
+      <Pagination page={page} totalPages={totalPages} />
+    </div>
   );
 };
 
