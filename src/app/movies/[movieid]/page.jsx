@@ -14,11 +14,11 @@ const MovieDetailsPage = async ({ params }) => {
   const movie = await data.json();
 
   const formatRuntime = (time) => {
-  const hours = Math.floor(time / 60);
-  const minutes = time % 60;
+    const hours = Math.floor(time / 60);
+    const minutes = time % 60;
 
-  return `${hours}h ${minutes}m`;
-};
+    return `${hours}h ${minutes}m`;
+  };
 
   return (
     <section>
@@ -31,60 +31,92 @@ const MovieDetailsPage = async ({ params }) => {
           className="h-full w-full object-cover object-top"
         />
         <div className="absolute bg-[#000000af] top-0 w-full h-full flex justify-start items-center">
-            <div className="container mx-auto  flex gap-6 h-auto ">
-                      <Image
-                        src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
-                        alt="Poster"
-                        height={200}
-                        width={300}
-                        className="w-auto h-auto object-cover"
-                      ></Image>
-                      <div className="flex flex-col justify-center gap-3">
-                        
-                        {/* Title */}
-                        <h2 className="font-extrabold text-5xl text-[#DAE3EE]">
-                          {movie.original_title}
-                        </h2>
-                        {/* info */}
-                        <div className="flex gap-2 items-center">
-                          <span className="text-[14px] font-semibold text-[#DAE3EE]">
-                            Release Date: {movie.release_date}
-                          </span>
-                          <span className="text-[14px] font-semibold text-[#DAE3EE]">
-                            Duration: {formatRuntime(movie.runtime)}
-                          </span>
-                        </div>
-                        <div className="flex gap-4 items-center">
-                          <p className="text[12px] text-[#F5C518] inline-flex items-center gap-1">
-                            <MdOutlineStar size={22} /> {movie.vote_average}
-                            <span className="text-[#9A9078]"> /10</span>
-                          </p>
-                          <p className="text[12px] text-[#F5C518] inline-flex items-center gap-1">
-                            <AiFillLike /> {movie.vote_count}
-                          </p>
-                          <p className="text[12px] text-[#F5C518] inline-flex items-center gap-1">
-                            <IoEyeSharp /> {movie.popularity}
-                          </p>
-                        </div>
-                        <div className="flex gap-4 items-center">
-                           {movie.genres.map((genre) => (
-                            <span
-                              key={genre.id}
-                              className="text-[12px] text-[#DAE3EE] bg-[#2D363E] px-2 py-0.5 uppercase"
-                            >
-                              {genre.name}
-                            </span>
-                          ))}
-                        </div>
-                        
-                        <div className="flex gap-6">
-                            <button className="btn flex gap-2 px-4 py-2 bg-[#222B33] items-center justify-center">
-                                <MdOutlineBookmarkAdd  size={24} color="#F5C518" /> Add to Watchlist
-                            </button>
-                            
-                        </div>
-                      </div>
-                    </div>
+          <div className="container mx-auto  flex gap-6 h-auto ">
+            <Image
+              src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
+              alt="Poster"
+              height={200}
+              width={300}
+              className="w-auto h-auto object-cover"
+            ></Image>
+            <div className="flex flex-col justify-center gap-3">
+              {/* Title */}
+              <h2 className="font-extrabold text-5xl text-[#DAE3EE]">
+                {movie.original_title}
+              </h2>
+              {/* info */}
+              <div className="flex gap-2 items-center">
+                <span className="text-[14px] font-semibold text-[#DAE3EE]">
+                  Release Date: {movie.release_date}
+                </span>
+                <span className="text-[14px] font-semibold text-[#DAE3EE]">
+                  Duration: {formatRuntime(movie.runtime)}
+                </span>
+              </div>
+              <div className="flex gap-4 items-center">
+                <p className="text[12px] text-[#F5C518] inline-flex items-center gap-1">
+                  <MdOutlineStar size={22} /> {movie.vote_average}
+                  <span className="text-[#9A9078]"> /10</span>
+                </p>
+                <p className="text[12px] text-[#F5C518] inline-flex items-center gap-1">
+                  <AiFillLike /> {movie.vote_count}
+                </p>
+                <p className="text[12px] text-[#F5C518] inline-flex items-center gap-1">
+                  <IoEyeSharp /> {movie.popularity}
+                </p>
+              </div>
+              <div className="flex gap-4 items-center">
+                {movie.genres.map((genre) => (
+                  <span
+                    key={genre.id}
+                    className="text-[12px] text-[#DAE3EE] bg-[#2D363E] px-2 py-0.5 uppercase"
+                  >
+                    {genre.name}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex gap-6">
+                <button className="btn flex gap-2 px-4 py-2 bg-[#222B33] items-center justify-center">
+                  <MdOutlineBookmarkAdd size={24} color="#F5C518" /> Add to
+                  Watchlist
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex my-20 container max-w-9/10 mx-auto gap-5">
+        <div className="w-8/12">
+          <div className="bg-[#141c24] rounded-lg p-6 w-full ">
+            <h4 className="border-l-6 border-[#F5C518] ps-3 text-2xl font-bold">
+              Overview
+            </h4>
+            <p className="mt-5 text-sm">{movie.overview}</p>
+          </div>
+        </div>
+        <div className="w-4/12 bg-[#141c24] rounded-lg p-6">
+          <h4 className="border-l-6 border-[#F5C518] ps-3 text-xl font-bold">
+            Production Companies
+          </h4>
+          <div className="grid grid-cols-5 gap-5 mt-5">
+            {
+              movie.production_companies.map((company)=>(
+                <div key={company.id} className="flex flex-col items-center gap-1">
+                  <div className="w-20 h-20 bg-white p-2 rounded-xl">
+                    <Image
+                  src={`https://image.tmdb.org/t/p/w1280${company.logo_path}`}
+                  alt="Marvel Studios"
+                  width={50}
+                  height={50}
+                  className="w-full h-full object-contain object-center"
+                  />
+                  </div>
+                  <h5 className="text-[12px] text-center">{company.name}</h5>
+                </div>
+              ))
+            }
+          </div>
         </div>
       </div>
     </section>
