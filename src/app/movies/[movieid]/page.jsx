@@ -4,6 +4,7 @@ import { MdOutlineStar } from "react-icons/md";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
 import { AiFillLike } from "react-icons/ai";
 import { IoEyeSharp } from "react-icons/io5";
+import Videos from "@/Components/movies/Videos";
 
 const MovieDetailsPage = async ({ params }) => {
   const { movieid } = await params;
@@ -94,6 +95,7 @@ const MovieDetailsPage = async ({ params }) => {
             </h4>
             <p className="mt-5 text-sm">{movie.overview}</p>
           </div>
+          <Videos movieId={movie.id}/>
         </div>
         <div className="w-4/12 bg-[#141c24] rounded-lg p-6">
           <h4 className="border-l-6 border-[#F5C518] ps-3 text-xl font-bold">
@@ -117,8 +119,9 @@ const MovieDetailsPage = async ({ params }) => {
               ))
             }
           </div>
-        </div>
-      </div>
+          
+        </div> 
+      </div>     
     </section>
   );
 };
